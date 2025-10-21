@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantomysticism: The Determinist Order of Shadows</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: #0a0a0a;
+            color: #c0c0c0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .background-chains {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, #fff 50px, #fff 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, #fff 50px, #fff 51px);
+            z-index: 0;
+            animation: chainShift 60s linear infinite;
+        }
+        
+        @keyframes chainShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .chain-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #888;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 20s infinite;
+            box-shadow: 0 0 3px rgba(136, 136, 136, 0.5);
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 3s; animation-duration: 30s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 6s; animation-duration: 22s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 2s; animation-duration: 28s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 8s; animation-duration: 26s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 4s; animation-duration: 24s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 7s; animation-duration: 29s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 1s; animation-duration: 27s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 5s; animation-duration: 23s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 9s; animation-duration: 31s; }
+        .particle:nth-child(11) { left: 25%; animation-delay: 11s; animation-duration: 21s; }
+        .particle:nth-child(12) { left: 35%; animation-delay: 10s; animation-duration: 33s; }
+        .particle:nth-child(13) { left: 45%; animation-delay: 12s; animation-duration: 25s; }
+        .particle:nth-child(14) { left: 55%; animation-delay: 13s; animation-duration: 28s; }
+        .particle:nth-child(15) { left: 65%; animation-delay: 14s; animation-duration: 26s; }
+        
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% { 
+                transform: translateY(-10vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+        
+        header {
+            position: relative;
+            text-align: center;
+            padding: 100px 20px 80px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-bottom: 2px solid #333;
+        }
+        
+        .eye-symbol {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            color: #888;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            z-index: 1;
+        }
+        
+        .core-belief {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            padding: 50px;
+            margin: 40px 0;
+            border-left: 4px solid #666;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .core-belief::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .core-belief h2 {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .core-belief p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            background: rgba(30, 30, 30, 0.8);
+            border-color: #555;
+            transform: translateX(5px);
+        }
+        
+        .section h2 {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+        
+        .principle {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(15, 15, 15, 0.8);
+            border-left: 3px solid #555;
+        }
+        
+        .principle h3 {
+            color: #ddd;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .hierarchy-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .level {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 30px;
+            border: 1px solid #444;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .level::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .level:hover::after {
+            left: 100%;
+        }
+        
+        .level:hover {
+            border-color: #666;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+        
+        .level h3 {
+            color: #fff;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .symbols {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .symbol {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .symbol:hover {
+            background: rgba(30, 30, 30, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .symbol-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+        }
+        
+        .symbol h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .forbidden {
+            background: linear-gradient(135deg, #1a0000 0%, #0a0000 100%);
+            border: 2px solid #600;
+            padding: 40px;
+            margin: 60px 0;
+        }
+        
+        .forbidden h2 {
+            color: #ff6666;
+            border-bottom-color: #600;
+        }
+        
+        .warning {
+            background: rgba(100, 0, 0, 0.2);
+            border-left: 3px solid #a00;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .warning h3 {
+            color: #ff8888;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #0a0a0a;
+            border-top: 2px solid #333;
+            margin-top: 80px;
+            color: #666;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #999;
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-chains"></div>
+    <div class="chain-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <header>
+        <svg style="width: 90px; height: 90px; margin: 0 auto 20px; display: block; filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="headerEyeGrad">
+                    <stop offset="0%" style="stop-color:#fff;stop-opacity:0.9" />
+                    <stop offset="50%" style="stop-color:#999;stop-opacity:0.7" />
+                    <stop offset="100%" style="stop-color:#444;stop-opacity:0.5" />
+                </radialGradient>
+            </defs>
+            <!-- Outer mystical circle -->
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#777" stroke-width="1" opacity="0.3"/>
+            <circle cx="60" cy="60" r="45" fill="none" stroke="#888" stroke-width="1.5" opacity="0.4"/>
+            
+            <!-- Eye shape -->
+            <path d="M20 60 Q30 40 60 40 Q90 40 100 60 Q90 80 60 80 Q30 80 20 60 Z" fill="none" stroke="#aaa" stroke-width="2.5"/>
+            
+            <!-- Iris -->
+            <circle cx="60" cy="60" r="20" fill="url(#headerEyeGrad)" stroke="#ccc" stroke-width="2"/>
+            
+            <!-- Pupil -->
+            <circle cx="60" cy="60" r="12" fill="#222"/>
+            <circle cx="60" cy="60" r="8" fill="#000"/>
+            
+            <!-- Light reflection -->
+            <circle cx="64" cy="56" r="4" fill="#bbb" opacity="0.8"/>
+            
+            <!-- Mystical lines radiating -->
+            <line x1="60" y1="10" x2="60" y2="25" stroke="#777" stroke-width="1.5" opacity="0.4"/>
+            <line x1="60" y1="95" x2="60" y2="110" stroke="#777" stroke-width="1.5" opacity="0.4"/>
+            <line x1="10" y1="60" x2="25" y2="60" stroke="#777" stroke-width="1.5" opacity="0.4"/>
+            <line x1="95" y1="60" x2="110" y2="60" stroke="#777" stroke-width="1.5" opacity="0.4"/>
+            
+            <!-- Diagonal lines -->
+            <line x1="25" y1="25" x2="35" y2="35" stroke="#666" stroke-width="1" opacity="0.3"/>
+            <line x1="95" y1="25" x2="85" y2="35" stroke="#666" stroke-width="1" opacity="0.3"/>
+            <line x1="25" y1="95" x2="35" y2="85" stroke="#666" stroke-width="1" opacity="0.3"/>
+            <line x1="95" y1="95" x2="85" y2="85" stroke="#666" stroke-width="1" opacity="0.3"/>
+            
+            <animateTransform attributeName="transform" type="rotate" from="0 60 60" to="360 60 60" dur="80s" repeatCount="indefinite"/>
+        </svg>
+        <h1>PANTOMYSTICISM</h1>
+        <div class="subtitle">The Determinist Order of Shadows</div>
+    </header>
+    
+    <div class="container">
+        <div class="core-belief">
+            <h2>Core Belief</h2>
+            <p>Free will is an illusion, a comforting lie told to keep the masses from facing the cold chain of causality. Every thought, desire, hesitation, and outrage is the sum of prior conditioning, feedback loops, and biological wiring. Pantomysticism doesn't just accept this — it weaponizes it, treating human behavior like clay in the hands of someone who actually understands the physics of habit, reflex, and social reinforcement.</p>
+            <br>
+            <p>Every gesture, every subtle mimicry, every carefully timed shadow-move is a node in a grand network of cause-and-effect, nudged strategically to generate desired outcomes. Pantomysts don't command — they orchestrate deterministic sequences so seamlessly that the world seems to "choose" what they want.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Expanded Principles</h2>
+            
+            <div class="principle">
+                <h3>The Mirror of Cause</h3>
+                <p>There is no such thing as choice. Only sequences of influence, some visible, some hidden. Pantomysts train themselves to perceive multi-layered chains—the cascading effects of a whispered rumor, the ripple of a glance, the conditioned reaction to a smell. By slipping tiny perturbations into these chains, they guide outcomes without interference being visible.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Conditioned Control</h3>
+                <p>Humans are pre-programmed by genetics, upbringing, culture, and repeated feedback. Pantomysts catalog these programs like coders mapping an API. By understanding the loops, they can predict responses with frightening precision and engineer situations where behavior aligns with their objectives.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Feedback Manipulation</h3>
+                <p>Every action is a signal, every reaction a data point. A glance at the right moment, a carefully mirrored gesture, even silence can set off deterministic ripples. The Pantomyst doesn't act randomly — they harvest and amplify these predictable effects. Social dynamics, political machinations, and even individual decisions can be bent without a soul noticing.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Biological Insight</h3>
+                <p>The nervous system is a machine, emotions are chemical feedback loops, and instincts are hardwired heuristics. Pantomysts study these relentlessly. They predict micro-reactions, anticipate reflexive responses, and guide behavior by aligning interventions with biological inevitabilities.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Illusion of Choice</h3>
+                <p>To the world, a Pantomyst seems like a shadowy puppeteer, bending reality with invisible strings. In truth, they are merely aligning deterministic sequences, nudging the world along the path it was already predisposed to follow. The illusion of free will remains intact for everyone but the practitioner.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Hierarchy of the Order</h2>
+            
+            <div class="hierarchy-levels">
+                <div class="level">
+                    <h3>Novice Shadows</h3>
+                    <p>Learn to map basic chains: individual triggers, repetitive social behaviors, simple cause-effect sequences. Practice silent observation, note-taking, and micro-mimicry.</p>
+                </div>
+                
+                <div class="level">
+                    <h3>Veiled Mimics</h3>
+                    <p>Experts at exploiting conditioning and feedback. Can subtly redirect the behavior of individuals and small groups. Begin to anticipate and manipulate secondary reactions in complex systems.</p>
+                </div>
+                
+                <div class="level">
+                    <h3>Silent Adepts</h3>
+                    <p>Orchestrate environments, manipulate social or economic conditions to produce predictable outcomes at scale. Actions appear random to observers, but outcomes are pre-engineered by understanding chains of causality.</p>
+                </div>
+                
+                <div class="level">
+                    <h3>Grand Pantomyst</h3>
+                    <p>Moves entire cities, organizations, or populations like pieces on a deterministic chessboard. Free will appears chaotic, but every ripple is pre-calculated, every decision predicted, every human node aligned.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quote">
+            "The world moves not by will, but by the invisible chains we weave through shadow and silence."
+        </div>
+        
+        <div class="section">
+            <h2>Determinist Rituals</h2>
+            
+            <div class="principle">
+                <h3>Chain Meditation</h3>
+                <p>Observe sequences of events and map each node. Patterns emerge, chains can be predicted, and the Pantomyst begins to visualize complex networks of influence.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Shadow Conditioning</h3>
+                <p>Subtle mimicry, reinforcement, and environmental nudges shape responses in others. Repeated exposure to specific stimuli gradually aligns targets with desired behaviors.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>Feedback Casting</h3>
+                <p>The deliberate introduction of micro-actions designed to trigger predictable responses. This is behavioral physics in practice, turning small gestures into amplified, systemic effects.</p>
+            </div>
+            
+            <div class="principle">
+                <h3>The Silent Equation</h3>
+                <p>High-level gatherings of Pantomysts where entire regions, organizations, or communities are analyzed. Participants calculate deterministic probabilities, forecasting outcomes and deciding which pulses to introduce to guide chains toward strategic goals.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Sacred Symbols</h2>
+            
+            <div class="symbols">
+                <div class="symbol">
+                    <svg class="symbol-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="handGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#888;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#444;stop-opacity:0.8" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M50 20 L55 35 L60 25 L62 40 L65 28 L67 45 L67 70 Q67 80 60 85 L40 85 Q33 80 33 70 L33 45 L35 35 L38 45 L40 30 L43 40 L45 25 Z" 
+                              fill="url(#handGrad)" stroke="#666" stroke-width="1.5" opacity="0.7"/>
+                        <line x1="30" y1="20" x2="70" y2="80" stroke="#555" stroke-width="1" opacity="0.4" stroke-dasharray="3,3"/>
+                        <line x1="70" y1="20" x2="30" y2="80" stroke="#555" stroke-width="1" opacity="0.4" stroke-dasharray="3,3"/>
+                    </svg>
+                    <h3>The Veiled Hand</h3>
+                    <p>Symbolizes manipulation of cause and effect. Often worn as rings, gloves, or amulets to signify rank and mastery.</p>
+                </div>
+                
+                <div class="symbol">
+                    <svg class="symbol-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="eyeGrad">
+                                <stop offset="0%" style="stop-color:#666;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#333;stop-opacity:0.6" />
+                            </radialGradient>
+                        </defs>
+                        <ellipse cx="50" cy="50" rx="35" ry="20" fill="none" stroke="#666" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="15" fill="url(#eyeGrad)" stroke="#888" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="8" fill="#444"/>
+                        <circle cx="52" cy="48" r="3" fill="#777"/>
+                        <path d="M15 50 Q25 35 50 50" fill="none" stroke="#555" stroke-width="1" opacity="0.5"/>
+                        <path d="M85 50 Q75 35 50 50" fill="none" stroke="#555" stroke-width="1" opacity="0.5"/>
+                    </svg>
+                    <h3>The Shadowed Eye</h3>
+                    <p>Observes deterministic chains, perceives outcomes invisible to ordinary humans. Often painted, tattooed, or embroidered on garments.</p>
+                </div>
+                
+                <div class="symbol">
+                    <svg class="symbol-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="figGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#666;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#333;stop-opacity:0.5" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="30" cy="25" r="8" fill="url(#figGrad1)" stroke="#666" stroke-width="1.5"/>
+                        <line x1="30" y1="33" x2="30" y2="55" stroke="#666" stroke-width="2.5"/>
+                        <line x1="30" y1="40" x2="22" y2="50" stroke="#666" stroke-width="2"/>
+                        <line x1="30" y1="40" x2="38" y2="50" stroke="#666" stroke-width="2"/>
+                        <line x1="30" y1="55" x2="22" y2="70" stroke="#666" stroke-width="2"/>
+                        <line x1="30" y1="55" x2="38" y2="70" stroke="#666" stroke-width="2"/>
+                        
+                        <circle cx="70" cy="25" r="8" fill="#444" stroke="#555" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="70" y1="33" x2="70" y2="55" stroke="#555" stroke-width="2.5" opacity="0.6"/>
+                        <line x1="70" y1="40" x2="62" y2="50" stroke="#555" stroke-width="2" opacity="0.6"/>
+                        <line x1="70" y1="40" x2="78" y2="50" stroke="#555" stroke-width="2" opacity="0.6"/>
+                        <line x1="70" y1="55" x2="62" y2="70" stroke="#555" stroke-width="2" opacity="0.6"/>
+                        <line x1="70" y1="55" x2="78" y2="70" stroke="#555" stroke-width="2" opacity="0.6"/>
+                        
+                        <path d="M35 45 L65 45" stroke="#555" stroke-width="1" stroke-dasharray="2,2" opacity="0.4"/>
+                        <polygon points="65,45 60,43 60,47" fill="#555" opacity="0.4"/>
+                    </svg>
+                    <h3>The Twin Silhouettes</h3>
+                    <p>Mirrors of cause and effect. One figure acts, the other reflects the outcome, demonstrating the inseparability of action and consequence.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="forbidden">
+            <h2>Forbidden Knowledge</h2>
+            
+            <div class="warning">
+                <h3>Complete Absorption</h3>
+                <p>Aligning with another's deterministic chain entirely. The practitioner becomes a living mirror of the target, erasing their individuality. Practically catastrophic: the practitioner risks losing themselves entirely.</p>
+            </div>
+            
+            <div class="warning">
+                <h3>Mimic's Collapse</h3>
+                <p>Attempting to manipulate chains too complex—societies, economies, or unnatural systems—can fracture the mind. The Pantomyst may become trapped in an endless loop of cause and effect, perceiving every outcome simultaneously without intervention.</p>
+            </div>
+            
+            <div class="warning">
+                <h3>Recursive Influence</h3>
+                <p>Experimenting with feedback on multiple chains at once can create loops where even the practitioner's own actions are predicted and countered, a danger only Grand Pantomysts can attempt safely.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="section" style="text-align: center;">
+            <h2>Contact the Order</h2>
+            <p style="font-size: 1.2em; margin: 30px 0;">For those who seek to understand the chains, or wish to begin their journey into the shadows.</p>
+            <p style="font-size: 1.3em; color: #fff; margin-top: 20px;">
+                <a href="mailto:daiondron@gmail.com" style="color: #aaa; text-decoration: none; border-bottom: 1px solid #666; transition: all 0.3s ease;">daiondron@gmail.com</a>
+            </p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>The chains are already in motion. The question is not whether you are controlled, but by whom.</p>
+        <p style="margin-top: 20px; font-size: 0.9em;">© The Determinist Order of Shadows</p>
+    </footer>
+    
+    <script data-goatcounter="https://pantomima.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
